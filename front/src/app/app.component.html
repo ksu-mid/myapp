@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+
+
+  <div *ngFor="let message of messages">
+    <div class="name">{{message.username}}</div>
+    <div class="text">{{message.text}}</div>
+  </div>
+
+  <div id="message">
+    <div class="row">
+      <div class="col">
+        <input [(ngModel)]="name" type="text" class="form-control" placeholder="Имя">
+      </div>
+      <div class="col">
+        <textarea [(ngModel)]="text" class="form-control" placeholder="Введите текст"></textarea>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="send()">Добавить</button>
+
+  <div id="login">
+    <div class="row">
+      <div class="col">
+        <input [(ngModel)]="l_name" type="text" class="form-control" placeholder="Логин">
+      </div>
+      <div class="col">
+        <input type="password" [(ngModel)]="l_password" class="form-control" placeholder="Пароль">
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="register()">Добавить</button>
+
+  <router-outlet></router-outlet>
+
+  <div class="substrate" *ngIf = "show_alert">
+    <div class="inform_window">
+      <div class="inform_text">{{text}}</div>
+      <button type="button" class="btn btn-secondary" (click)="close_my_alert ()"> Ок </button>
+    </div>
+  </div>
