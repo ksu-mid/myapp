@@ -6,10 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
+import { NavComponent } from './nav/nav.component';
+import { MyAlertComponent } from './my-alert/my-alert.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent,
+    MyAlertComponent
   ],
   imports: [
     BrowserModule,

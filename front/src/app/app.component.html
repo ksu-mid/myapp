@@ -1,5 +1,7 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<app-nav></app-nav>
+
 <div style="text-align:center">
+ 
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -37,9 +39,4 @@
 
   <router-outlet></router-outlet>
 
-  <div class="substrate" *ngIf = "show_alert">
-    <div class="inform_window">
-      <div class="inform_text">{{text}}</div>
-      <button type="button" class="btn btn-secondary" (click)="close_my_alert ()"> Ок </button>
-    </div>
-  </div>
+  <app-my-alert [inner_show_alert]="show_alert" [alert_text]="alert_text"></app-my-alert>

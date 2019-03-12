@@ -17,9 +17,11 @@ export class AppComponent implements OnInit {
   title = 'front';
   name: String;
   text: String;
+  alert_text: String;
+  show_alert: Boolean = false;
   l_name: String;
   l_password: String;
-  private show_alert: Boolean = false;
+
   messages: any = [];
   
   //
@@ -55,10 +57,7 @@ export class AppComponent implements OnInit {
   }
   my_alert(text: any) {
     this.show_alert = true
-    this.text = text
-  }
-  close_my_alert() {
-    this.show_alert = false
+    this.alert_text = text
   }
 
   show_messages() {
