@@ -9,7 +9,7 @@ export class MyAlertComponent implements OnInit {
 
   constructor() { }
   @Input() inner_show_alert: Boolean;
-  @Input() alert_text: String;
+  @Input() inner_alert_text: String;
   ngOnInit() {
   }
 

@@ -1,0 +1,17 @@
+<div *ngFor="let message of messages">
+  <div class="name">{{message.name}}</div>
+  <div class="text">{{message.text}}</div>
+</div>
+
+<div id="message">
+  <div class="row">
+    <div class="col">
+      <input [(ngModel)]="name" type="text" class="form-control" placeholder="Имя">
+    </div>
+    <div class="col">
+      <textarea [(ngModel)]="text" class="form-control" placeholder="Введите текст"></textarea>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" (click)="send()">Добавить</button>
+
