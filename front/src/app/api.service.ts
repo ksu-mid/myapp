@@ -27,4 +27,11 @@ export class ApiService {
     return this.http.get('http://localhost:3000/message');
   }
 
+  cor(data) {
+    return this.http.post('http://localhost:3000/correct-message', data, this.httpOptions);
+  }
+
+  // get_cor_messages() {
+  //   return this.http.get('http://localhost:3000/correct-message');
+  // }
 }

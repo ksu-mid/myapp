@@ -10,11 +10,16 @@
   </div>
 </div>
 
+<div>I'm here{{corrected_text}}</div>
 
-<div *ngFor="let message of messages" class="card border-primary mb-3" style="max-width: 20rem;">
-  <div class="card-header">{{message.name}}</div>
-  <div class="card-body">
-    <!-- <h4 class="card-title">Primary card title</h4> -->
-    <p class="card-text">{{message.text}}</p>
+<div *ngFor="let message of messages; index as i" class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header"> {{message.name}}{{i}} </div>
+  <div class="card-body" >
+       <p [hidden]="current_text" class="card-text">{{message.text}}</p>
+  </div>
+  <button type="button" class="btn btn-primary btn-sm btn_correct" (click)="correct (i); corrected_text[i]=message.text">Исправить</button>
+  <div class="text-edit" [hidden]="text_edit">
+  <textarea [(ngModel)]="corrected_text[i]">{{message.text}}</textarea>
+  <button (click)="send_correct (i, corrected_text[i])"> Сохранить изменения </button>
   </div>
 </div>

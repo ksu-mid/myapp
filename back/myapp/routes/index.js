@@ -62,4 +62,20 @@ router.get('/message', function (req, res, next) {
 })
 });
 
+router.post('/correct-message', function (req, res) {
+  fs.readFile(__dirname + '/message.json', 'utf-8', function (err, data) {
+    console.log(err, data)
+    let arr = JSON.parse(data)
+    //arr.splice(req.body.i, 1, {text:req.body.message})
+    arr[req.body].text = req.body.message
+    let json = JSON.stringify(arr)
+    fs.writeFile(__dirname + '/message.json', json, function (err, text) {
+      console.log(err, text)
+      res.json({
+        ok: true
+      })
+    })
+  })
+})
+
 module.exports = router;
