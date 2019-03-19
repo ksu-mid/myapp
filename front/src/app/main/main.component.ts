@@ -36,6 +36,7 @@ export class MainComponent implements OnInit {
     this.api.mes({ name, text })
       .subscribe((result: any) => {
         console.log(result)
+        this.show_messages()
       });
   }
 
@@ -63,8 +64,9 @@ export class MainComponent implements OnInit {
       });
   }
   delete(i) {
-    console.log(i)
-      this.api.cor({ i })
+    console.log(i, this.messages[i])
+    const message = this.messages[i]
+      this.api.del({ i, message })
       .subscribe((result: any) => {
         console.log(result)
         this.show_messages()
