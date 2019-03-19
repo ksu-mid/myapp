@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   }
   my_alert(text: any) {
+    this.alert_text = text 
     this.show_alert = true
-    this.alert_text = text
   }
 }

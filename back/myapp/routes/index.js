@@ -58,16 +58,16 @@ router.post('/registration', function (req, res) {
 router.get('/message', function (req, res, next) {
   fs.readFile(__dirname + '/message.json', 'utf-8', function (err, data) {
     let arr = JSON.parse(data)
-    res.json({message: arr})
-})
+    res.json({ message: arr })
+  })
 });
 
 router.post('/correct-message', function (req, res) {
   fs.readFile(__dirname + '/message.json', 'utf-8', function (err, data) {
     console.log(err, data)
+    const text = req.body.text
     let arr = JSON.parse(data)
-    //arr.splice(req.body.i, 1, {text:req.body.message})
-    arr[req.body].text = req.body.message
+    arr[req.body.i].text = req.body.text
     let json = JSON.stringify(arr)
     fs.writeFile(__dirname + '/message.json', json, function (err, text) {
       console.log(err, text)
@@ -78,4 +78,32 @@ router.post('/correct-message', function (req, res) {
   })
 })
 
+router.get('/correct-message', function (req, res, next) {
+  fs.readFile(__dirname + '/message.json', 'utf-8', function (err, data) {
+    let arr = JSON.parse(data)
+    res.json({ message: arr })
+  })
+});
+
+router.post('/del-message', function (req, res) {
+  fs.readFile(__dirname + '/message.json', 'utf-8', function (err, data) {
+    console.log(err, data)
+    let arr = JSON.parse(data)
+    arr.splice(req.body.i, 1)
+    let json = JSON.stringify(arr)
+    fs.writeFile(__dirname + '/message.json', json, function (err, text) {
+      console.log(err, text)
+      res.json({
+        ok: true
+      })
+    })
+  })
+})
+
+router.get('/del-message', function (req, res, next) {
+  fs.readFile(__dirname + '/message.json', 'utf-8', function (err, data) {
+    let arr = JSON.parse(data)
+    res.json({ message: arr })
+  })
+});
 module.exports = router;

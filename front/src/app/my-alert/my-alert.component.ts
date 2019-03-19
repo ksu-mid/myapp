@@ -8,8 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MyAlertComponent implements OnInit {
 
   constructor() { }
-  @Input() inner_show_alert: Boolean;
   @Input() inner_alert_text: String;
+  @Input() inner_show_alert: Boolean;
+
   ngOnInit() {
   }
 
