@@ -23,23 +23,32 @@ export class LoginComponent implements OnInit {
   //
   // Registration
   //
-  register() {
+  login() {
 
-    this.my_alert("Регистрация и авторизация успешна")
-
-    this.api.reg({ email: this.l_name, password: this.l_password })
+    this.my_alert("Авторизация успешна")
+    const email = this.l_name
+    const password = this.l_password
+    this.api.log({ email, password })
       .subscribe((result: any) => {
         console.log(result)
         if (result.ok) {
           window.localStorage.setItem("token", result.token)
-          this.my_alert("Регистрация и авторизация успешна")
+          this.my_alert("Авторизация успешна")
         }
-        else this.my_alert("Пользователь с таким именем уже существует")
+        else this.my_alert("Ошибка авторизации")
       });
-
   }
+ 
+  // set_token() {
+  //   this.api.get_token()
+  //     .subscribe((result: any) => {
+  //       console.log(result.token)
+  //       window.localStorage.setItem("token", result.token)
+  //     });
+  // }
+
   my_alert(text: any) {
-    this.alert_text = text 
+    this.alert_text = text
     this.show_alert = true
   }
 }

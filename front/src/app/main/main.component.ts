@@ -30,10 +30,10 @@ export class MainComponent implements OnInit {
   //
   send() {
 
-    const name = this.name
+    const token = window.localStorage.getItem ("token")
     const text = this.text
 
-    this.api.mes({ name, text })
+    this.api.mes({ token, text })
       .subscribe((result: any) => {
         console.log(result)
         this.show_messages()

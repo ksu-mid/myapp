@@ -23,6 +23,14 @@ export class ApiService {
     return this.http.post('http://localhost:3000/registration', data, this.httpOptions);
   }
 
+  log(data) {
+    return this.http.post('http://localhost:3000/login', data, this.httpOptions);
+  }
+  
+  get_token () {
+    return this.http.get('http://localhost:3000/registration');
+  }
+
   get_messages() {
     return this.http.get('http://localhost:3000/message');
   }
