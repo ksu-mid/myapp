@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs')
+var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -25,8 +26,8 @@ router.post('/message', function (req, res) {
     const user = arr.filter(function (user) {
       return (token == user.token)
     })[0]
-    console.log (user)
-    if (user == undefined) res.json ({ok: false, message: "Пользователь не авторизирован"})
+    console.log(user)
+    if (user == undefined) res.json({ ok: false, message: "Пользователь не авторизирован" })
     else {
       const message = { name: user.email, text: req.body.text }
       fs.readFile(__dirname + '/message.json', 'utf-8', function (err, json_arr) {
@@ -119,15 +120,6 @@ router.post('/registration', function (req, res) {
   })
 })
 
-router.get('/registration', function (req, res) {
-  res.render('registration', { title: 'Регистрация' })
-})
-
-
-router.get('/login', function (req, res) {
-  res.render('login', { title: 'Авторизация' })
-})
-
 router.post('/login', function (req, res) {
   console.log(req.body)
   const email = req.body.email
@@ -142,5 +134,54 @@ router.post('/login', function (req, res) {
     else res.json({ ok: false })
   })
 })
+
+router.post('/db-registration', function (req, res) {
+  const email = req.body.email
+  const password = req.body.password
+  User.findOne({ email: email }, function (err, user) {
+    console.log(user)
+    if (user !== null) res.json({ ok: false, message: "Юзер с таким email уже существует" })
+    else {
+      var user = new User({
+        email: email,
+        password: password
+      })
+      user
+        .save()
+        .then(() => console.log("ok"))
+        .catch((err) => console.log(err));
+      res.json({ ok: true })
+    }
+  })
+})
+
+router.post('/db-registration2', function (req, res) {
+  const firstName = req.body.firstName
+  const lastName = req.body.lastName
+  const dob = req.body.dob
+  const sex = req.body.sex
+  const email = req.body.email
+  const query = { email: email };
+  const update = {
+    $set: {
+      firstName: firstName,
+      lastName: lastName,
+      dob: dob,
+      sex: sex
+    }
+  };
+  const options = { new: true };
+  User.findOneAndUpdate(query, update, options, function (err, user) {
+    if (err) {
+      console.log("Something wrong when updating data!", err);
+      res.json({ ok: false })
+    }
+    else {
+      res.json({ ok: true })
+    }
+  })
+})
+
+
 
 module.exports = router;

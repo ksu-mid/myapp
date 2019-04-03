@@ -23,6 +23,14 @@ export class ApiService {
     return this.http.post('http://localhost:3000/registration', data, this.httpOptions);
   }
 
+  reg_db(data) {
+    return this.http.post('http://localhost:3000/db-registration', data, this.httpOptions);
+  }
+
+  add_db(data) {
+    return this.http.post('http://localhost:3000/db-registration2', data, this.httpOptions);
+  }
+
   log(data) {
     return this.http.post('http://localhost:3000/login', data, this.httpOptions);
   }

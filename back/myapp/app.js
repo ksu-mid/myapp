@@ -4,6 +4,43 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
+//
+//MongoDB Atlas
+//
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://oksana__:gavrich_123@cluster0-voriq.mongodb.net/test?retryWrites=true";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   console.log ("Connected", err)
+//   client.close();
+
+// });
+
+//
+//MongoDB Server (работа без Mongoose)
+//
+// const MongoClient = require('mongodb').MongoClient;
+// const assert = require('assert');
+//  // Connection URL
+// const url = 'mongodb://localhost:27017';
+//  // Database Name
+// const dbName = 'db';
+//  // Use connect method to connect to the server
+// MongoClient.connect(url, function(err, client) {
+//   assert.equal(null, err);
+//   console.log("Connected successfully to server");
+//    const db = client.db(dbName);
+//    client.close();
+// });
+
+
+//
+//Mongoose
+//
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/db', {useNewUrlParser: true});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -35,12 +72,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
