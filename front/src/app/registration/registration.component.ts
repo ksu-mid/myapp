@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from "@angular/router";
+import { ɵangular_packages_platform_browser_platform_browser_d } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registration',
@@ -26,6 +27,9 @@ export class RegistrationComponent implements OnInit {
   last_name: String;
   date_of_birth: Date;
   sex: String;
+  eye_mode: String = 'password';
+  exclamation_name: String = "";
+
 
   //
   // Registration
@@ -89,6 +93,13 @@ export class RegistrationComponent implements OnInit {
   take_information() {
     this.user_information = false;
     this.registration_form = true;
+  }
+
+  show_password() {
+    if (this.eye_mode == 'text') this.eye_mode = 'password'
+    else this.eye_mode = 'text'
+   
+
   }
 }
 
