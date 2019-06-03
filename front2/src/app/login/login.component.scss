@@ -1,0 +1,30 @@
+.input_login {
+width: 50%;
+margin: 1em auto 0;
+}
+
+.btn_for_login{
+  margin: 1em auto 0;
+  }
+.row {
+    justify-content: center;
+  }
+.btn_for_eye {
+    margin-left: -44px;
+  }
+form {
+  &>div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.alert {
+  width: 50%;
+  margin: 1em auto 0;
+}
+.eye-input {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  margin: 1em auto 0;
+}

@@ -1,0 +1,36 @@
+<!-- <h1 class="title">Форма создания пользователя</h1>
+
+<hr/>
+
+<form class="user-form" [formGroup]="userForm" (submit)="onSubmit()">
+
+	<div class="form-group">
+		<label for="type">Тип пользователя:</label>
+		<select id="type" formControlName="type">
+      <option disabled value="null">выберите</option>
+      <option *ngFor="let userType of userTypes">{{userType}}</option>
+    </select>
+	</div>
+
+	<div class="form-group">
+		<label for="name">Имя пользователя:</label>
+		<input type="text" id="name" formControlName="name" />
+	</div>
+
+	<div class="form-group">
+		<label for="address">Адрес пользователя:</label>
+		<input type="text" id="address" formControlName="address" />
+	</div>
+
+	<div class="form-group">
+		<label for="password">Пароль пользователя:</label>
+		<input type="text" id="password" formControlName="password" />
+	</div>
+  <div class="error"
+   *ngIf="userForm.get('password').getError('invalidPassword') && userForm.get('password').touched">
+    {{userForm.get('password').getError('invalidPassword')}}</div>
+
+  <button type="submit">добавить</button>
+</form>
+<hr/>
+<div>{{userForm.value|json}}</div> -->

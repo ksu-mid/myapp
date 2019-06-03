@@ -1,0 +1,24 @@
+<div class="card mb-3">
+  <h3 class="card-header">Личный кабинет</h3>
+  <div class="card-body">
+    <h5 class="card-title">Имя пользователя</h5>
+    <h6 class="card-subtitle text-muted" [hidden]="current_text">{{user.firstName}}</h6>
+    <textarea type="text" [(ngModel)]="corrected_firstName" class="card-subtitle text-muted" [hidden]="text_edit">{{user.firstName}}</textarea>
+    <h5 class="card-title">Фамилия пользователя</h5>
+    <h6 class="card-subtitle text-muted" [hidden]="current_text">{{user.lastName}}</h6>
+    <textarea type="text" [(ngModel)]="corrected_lastName"class="card-subtitle text-muted" [hidden]="text_edit">{{user.lastName}}</textarea>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" [hidden]="current_text">Пол: {{user.sex}}</li>
+    <select [(ngModel)]="corrected_sex" [hidden]="text_edit" class="form-control" id="selectSex">
+      <option>Мужской</option>
+      <option>Женский</option>
+    </select>
+    <li class="list-group-item" [hidden]="current_text">Дата рождения: {{user.dob}}</li>
+    <input [(ngModel)]="corrected_dob" type="date" class="card-subtitle text-muted" [hidden]="text_edit" placeholder={{user.dob}}>
+    <li class="list-group-item" [hidden]="current_text">Email: {{user.email}}</li>
+    <textarea [(ngModel)]="corrected_email" type="text" class="card-subtitle text-muted" [hidden]="text_edit">{{user.email}}</textarea>
+  </ul>
+</div>
+<button type="button" [hidden]="current_text" class="btn btn-primary" (click)="correct (); corrected_firstName=user.firstName; corrected_lastName=user.lastName; corrected_sex=user.sex; corrected_dob=user.dob; corrected_email=user.email">Внести изменения</button>
+<button type="button" [hidden]="text_edit" class="btn btn-primary" (click)="pass_correct (corrected_firstName, corrected_lastName, corrected_sex, corrected_dob, corrected_email, user)">Сохранить изменения</button>

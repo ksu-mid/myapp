@@ -1,0 +1,25 @@
+<div id="message">
+  <div class="row">
+    <textarea [(ngModel)]="text" class="form-control input_text" placeholder="Введите текст"></textarea>
+  </div>
+  <div class="row">
+    <button type="button" class="btn btn-primary btn_for_message" (click)="send()">Добавить</button>
+  </div>
+</div>
+
+
+<div *ngFor="let message of messages; index as i" class="card border-primary mb-3" style="max-width: 20rem;">
+  <div class="card-header"> {{message.user.firstName}} </div>
+  <div class="card-body" >
+       <p [hidden]="current_text[i]" class="card-text">{{message.text}}</p>
+  </div>
+  <button type="button" class="btn btn-primary btn-sm btn_correct" (click)="correct (i); corrected_text[i]=message.text">Исправить</button>
+  <div class="text-edit" [hidden]="!text_edit[i]">
+  <textarea [(ngModel)]="corrected_text[i]">{{message.text}}</textarea>
+  <button (click)="send_correct (i, corrected_text[i], message)"> Сохранить изменения </button>
+  </div>
+  <br>
+  <button type="button" class="btn btn-primary btn-sm btn_delete" (click)="delete (i, message)">Удалить</button>
+</div>
+
+<app-two-way [state] = "state_for_two_way" (onChanged)="reaction($event)"></app-two-way>
