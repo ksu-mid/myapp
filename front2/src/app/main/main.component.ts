@@ -18,18 +18,14 @@ export class MainComponent implements OnInit {
     this.show_messages()
 
   }
+  
   name: String;
   text: String;
   corrected_text: String[] = [];
   text_edit: Boolean[] = [];
   current_text: Boolean[] = [];
   message: any;
-  state_for_two_way: any = {
-    user: "Jack",
-    role: "admin"
-  }
-
-
+  _id: any;
   messages: any = [];
 
   //
@@ -37,7 +33,7 @@ export class MainComponent implements OnInit {
   //
   send() {
     const text = this.text
-    const token = this.cookie.get_token('token_name')
+    const token = this.cookie.get_token()
     if (token == undefined) alert("Авторизируйтесь для отправки сообщений!")
     else {
       this.api.mes({ token, text })
@@ -54,6 +50,7 @@ export class MainComponent implements OnInit {
       .subscribe((result: any) => {
         console.log(result, "Messages")
         this.messages = result.message
+        this._id = this.cookie.get_user()
       });
   }
 

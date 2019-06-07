@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { CookieService } from '../services/cookie.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
   login_form: FormGroup
   constructor(
     private api: ApiService,
+    private router: Router,
     private cookie: CookieService,
     private formbuilder: FormBuilder
   ) { }
@@ -50,7 +52,10 @@ export class LoginComponent implements OnInit {
           // window.localStorage.setItem("token", result.token)
           console.log (this.cookie)
           this.cookie.set_token(result.token)
+          const _id = result._id
+          this.cookie.set_user(_id)
           this.my_alert("Авторизация успешна")
+          this.router.navigate(['/main'])
         }
         else this.my_alert("Ошибка авторизации")
       });

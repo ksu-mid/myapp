@@ -14,6 +14,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { TwoWayComponent } from './two-way/two-way.component';
+import { SearchComponent } from './search/search.component';
 // import { ValidComponent } from './valid/valid.component';
 // import { UserValidationService } from './services/user-validation.service';
 
@@ -28,6 +29,7 @@ import { TwoWayComponent } from './two-way/two-way.component';
     RegistrationComponent,
     PersonalAreaComponent,
     TwoWayComponent,
+    SearchComponent,
   
         // ValidComponent
   ],

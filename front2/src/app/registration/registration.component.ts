@@ -71,6 +71,8 @@ export class RegistrationComponent implements OnInit {
             if (result.ok) {
               // this.my_alert("Регистрация и авторизация успешна")
               this.cookie.set_token(result.token)
+              const _id = result._id
+              this.cookie.set_user(_id)
               alert("Регистрация успешна")
               this.take_information()
             }

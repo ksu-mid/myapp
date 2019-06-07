@@ -31,7 +31,7 @@ export class PersonalAreaComponent implements OnInit {
 
 
   get_personal_data() {
-    const token = this.cookie.get_token('token_name')
+    const token = this.cookie.get_token()
     this.api.get_personal_data({ token })
       .subscribe((result: any) => {
         console.log(result)

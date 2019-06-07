@@ -262,7 +262,7 @@ router.post('/login-db', function (req, res) {
     }
     else {
       console.log(user, "это я")
-      if (user) res.json({ ok: true, token: user.token })
+      if (user) res.json({ ok: true, token: user.token, _id: user._id })
       else res.json ({ok:false, msg:"User is not found"})
     }
   })
@@ -287,7 +287,7 @@ router.post('/db-registration', function (req, res) {
         .save()
         .then(() => console.log("ok"))
         .catch((err) => console.log(err));
-      res.json({ ok: true, token: user.token })
+      res.json({ ok: true, token: user.token, _id: user._id })
     }
   })
 })

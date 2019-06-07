@@ -1,0 +1,6 @@
+<form class="form-inline my-2 my-lg-0" [formGroup]="search_form">  
+  <input formControlName="search_control" class="form-control mr-sm-2" type="text" placeholder="Search">
+  <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="search()">Поиск</button> 
+  <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="clear_search()" ><i class="far fa-times-circle"></i></button>
+</form>
+
